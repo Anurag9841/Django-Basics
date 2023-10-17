@@ -4,15 +4,15 @@ from django.shortcuts import render
 def index(request):
     return render(request,'index.html')
 def counter(request):
-    words = request.GET['text']
+    words = request.POST['text']
     count = len(words.split())
     return render(request,'counter.html',{'count':count})
 def splitting(request):
-    text = request.GET['split']
+    text = request.POST['split']
     splitted = text.split()
     return render(request,'splitting.html',{'splitted':splitted})
 def removepunc(request):
-    punct = request.GET['punctuation']
+    punct = request.POST['punctuation']
     # puncts = punct
     punctuated = '''", '/;[]{}()!?:-&%$#*@"'''
     analyze =""
