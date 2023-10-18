@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from .models import Feature,Friends
 def index(request):
-    return render(request,'index.html')
+    features = Friends.objects.all()
+    return render(request,'index.html',{'features':features})
 def counter(request):
     words = request.POST['text']
     count = len(words.split())
