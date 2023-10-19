@@ -20,8 +20,4 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('polls.urls')),
-    path('counter/',include('polls.urls')),
-    path('splitting/',include('polls.urls')),
-    path('removepunc/',include('polls.urls')),
-    path('about/',include('polls.urls')),
-    path('contact/',include('polls.urls'))]
+    path('register',include('polls.urls'))]
