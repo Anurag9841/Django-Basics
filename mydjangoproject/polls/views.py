@@ -21,13 +21,30 @@ def register(request):
                 return redirect('/register')
             else:
                 user = User.objects.create_user(username=username,email=email,password=password)
-                user.save();
-                return redirect('/')
+                user.save()
+                return redirect('/login')
         else:
             messages.info(request,'Password Not The Same')
             return redirect('/register')
     else:
         return render(request,'register.html')
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=username,password=password)#to check wether user is present in django database or not
+        if user is not None:
+            auth.login(request,user)#log user sucessfully after they have been authenticated
+            return redirect('/')
+        else:
+            messages.info(request,'User not registered')
+            return redirect('/register')
+    else:
+        return render(request,'login.html')
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
 def counter(request):
     words = request.POST['text']
     count = len(words.split())
