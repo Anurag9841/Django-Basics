@@ -22,4 +22,5 @@ urlpatterns = [
     path('',include('polls.urls')),
     path('register',include('polls.urls')),
     path('login',include('polls.urls')),
-    path('logout',include('polls.urls'))]
+    path('logout',include('polls.urls')),
+    path('post/<str:pk>',include('polls.urls'))]

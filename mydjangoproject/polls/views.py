@@ -45,6 +45,9 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+def post(request,pk):
+    feature = Friend.objects.get(id=pk)
+    return render(request,'post.html',{'feature':feature})
 def counter(request):
     words = request.POST['text']
     count = len(words.split())
